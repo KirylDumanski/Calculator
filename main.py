@@ -6,6 +6,17 @@ from design import Ui_MainWindow
 
 from PyQt5.QtGui import QFontDatabase
 
+from typing import Text, Optional, Union
+
+from operator import add, sub, mul, truediv
+
+operations = {
+    '+': add,
+    '−': sub,
+    '×': mul,
+    '÷': truediv,
+}
+
 
 class Calculator(QMainWindow):
     def __init__(self):
@@ -40,8 +51,10 @@ class Calculator(QMainWindow):
 
         # Math operations
 
+        # Calculate
+
     def add_digit(self) -> None:
-        """Adds digit to entry line by clicking digit button"""
+        """Add digit to entry line by clicking digit button"""
         btn = self.sender()
 
         if self.ui.entry.text() == '0':
@@ -50,26 +63,64 @@ class Calculator(QMainWindow):
             self.ui.entry.setText(self.ui.entry.text() + btn.text())
 
     def clear_all(self) -> None:
-        """Clears all (entry line and temp label)"""
+        """Clear all (entry line and temp label)"""
         self.ui.entry.setText('0')
         self.ui.temp.clear()
 
     def clear_entry(self) -> None:
-        """Clears entry line"""
+        """Clear entry line"""
         self.ui.entry.setText('0')
 
     def add_point(self) -> None:
-        """Adds point to entry line"""
+        """Add point to entry line"""
         if '.' not in self.ui.entry.text():
             self.ui.entry.setText(self.ui.entry.text() + '.')
 
     def add_temp(self) -> None:
-        """Adds an expression to the temporary content field"""
+        """Add an expression to the temp label"""
         btn = self.sender()
+        entry = self.remove_trailing_zeros(self.ui.entry.text())
 
         if not self.ui.temp.text():
-            self.ui.temp.setText(self.ui.entry.text() + f" {btn.text()}")
+            self.ui.temp.setText(entry + f" {btn.text()} ")
             self.ui.entry.setText('0')
+
+    @staticmethod
+    def remove_trailing_zeros(num: Text) -> str:
+        """Remove trailing zeros"""
+        n = str(float(num))
+        return n.replace('.0', '') if n.endswith('.0') else n
+
+    def get_entry_num(self) -> Union[int, float]:
+        """Return number from entry line"""
+        entry = self.ui.entry.text()
+        return float(entry) if '.' in entry else int(entry)
+
+    def get_temp_num(self) -> Union[int, float]:
+        """Return number from temp label """
+        if self.ui.temp.text():
+            temp = self.ui.temp.text().split()[0]
+            return float(temp) if '.' in temp else int(temp)
+
+    def get_math_sign(self) -> Optional[str]:
+        """Return math sign from temp label"""
+        if self.ui.temp.text():
+            return self.ui.temp.text().split()[-1]
+
+    def calculate(self) -> Optional[str]:
+        """Perform a calculation, displays and returns the result of a mathematical operation"""
+        try:
+            temp = self.ui.temp.text()
+            entry = self.ui.entry.text()
+            result = self.remove_trailing_zeros(
+                operations[self.get_math_sign()](self.get_temp_num(), self.get_entry_num())
+            )
+            self.ui.temp.setText(temp + self.remove_trailing_zeros(entry) + ' =')
+            self.ui.entry.setText(result)
+            return result
+
+        except KeyError:
+            pass
 
 
 if __name__ == "__main__":
