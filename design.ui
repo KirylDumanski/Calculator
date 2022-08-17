@@ -46,28 +46,28 @@ QPushButton:pressed {
 }
 
 /* Div, mul, sub, add, calc buttons style */
-#btn_div, #btn_mul, #btn_sub, #btn_add, #btn_calc {
+#btn_div, #btn_mult, #btn_minus, #btn_plus, #btn_calc {
 	background-color: #FFA500;
 }
 
-#btn_div:hover, #btn_mul:hover, #btn_sub:hover, #btn_add:hover, #btn_calc:hover {
+#btn_div:hover, #btn_mult:hover, #btn_minus:hover, #btn_plus:hover, #btn_calc:hover {
 	background-color: #CF8600;
 }
 
-#btn_div:pressed, #btn_mul:pressed, #btn_sub:pressed, #btn_add:pressed, #btn_calc:pressed {
+#btn_div:pressed, #btn_mult:pressed, #btn_minus:pressed, #btn_plus:pressed, #btn_calc:pressed {
 	background-color: #AD7100;
 }
 
 /*C, CE, Backspace, neg buttons style */
-#btn_c, #btn_ce, #btn_backspace, #btn_neg{
+#btn_c, #btn_ce, #btn_backspace, #btn_negative{
 	background-color: #FFFF00;
 }
 
-#btn_c:hover, #btn_ce:hover, #btn_backspace:hover, #btn_neg:hover{
+#btn_c:hover, #btn_ce:hover, #btn_backspace:hover, #btn_negative:hover{
 	background-color: #C7C700;
 }
 
-#btn_c:pressed, #btn_ce:pressed, #btn_backspace:pressed, #btn_neg:pressed{
+#btn_c:pressed, #btn_ce:pressed, #btn_backspace:pressed, #btn_negative:pressed{
 	background-color: #ADAD00;
 }</string>
   </property>
@@ -80,7 +80,7 @@ QPushButton:pressed {
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLabel" name="lbl_temp">
+     <widget class="QLabel" name="temp">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
         <horstretch>0</horstretch>
@@ -99,7 +99,7 @@ QPushButton:pressed {
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="le_entry">
+     <widget class="QLineEdit" name="entry">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
         <horstretch>0</horstretch>
@@ -122,7 +122,7 @@ border: none</string>
        <string>0</string>
       </property>
       <property name="maxLength">
-       <number>10</number>
+       <number>9</number>
       </property>
       <property name="alignment">
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -296,7 +296,7 @@ border: none</string>
        </widget>
       </item>
       <item row="0" column="2">
-       <widget class="QPushButton" name="btn_negat">
+       <widget class="QPushButton" name="btn_negative">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -356,7 +356,7 @@ border: none</string>
        </widget>
       </item>
       <item row="1" column="3">
-       <widget class="QPushButton" name="btn_mul">
+       <widget class="QPushButton" name="btn_mult">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -375,7 +375,7 @@ border: none</string>
        </widget>
       </item>
       <item row="2" column="3">
-       <widget class="QPushButton" name="btn_sub">
+       <widget class="QPushButton" name="btn_minus">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -399,7 +399,7 @@ color: gb(255, 170, 0);
        </widget>
       </item>
       <item row="3" column="3">
-       <widget class="QPushButton" name="btn_add">
+       <widget class="QPushButton" name="btn_plus">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
           <horstretch>0</horstretch>
