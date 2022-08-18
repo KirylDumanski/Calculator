@@ -89,11 +89,11 @@ class Ui_MainWindow(object):
         self.entry.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setFamily("Rubik")
-        font.setPointSize(40)
+        font.setPointSize(37)
         font.setBold(True)
         font.setWeight(62)
         self.entry.setFont(font)
-        self.entry.setStyleSheet("font-size: 40pt;\n"
+        self.entry.setStyleSheet("font-size: 37pt;\n"
 "border: none")
         self.entry.setMaxLength(9)
         self.entry.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
