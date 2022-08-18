@@ -109,13 +109,13 @@ QPushButton:pressed {
       <property name="font">
        <font>
         <family>Rubik</family>
-        <pointsize>40</pointsize>
+        <pointsize>37</pointsize>
         <weight>62</weight>
         <bold>true</bold>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">font-size: 40pt;
+       <string notr="true">font-size: 37pt;
 border: none</string>
       </property>
       <property name="text">
