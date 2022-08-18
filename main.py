@@ -71,10 +71,12 @@ class Calculator(QMainWindow):
         """Clear all (entry line and temp label)"""
         self.ui.entry.setText('0')
         self.ui.temp.clear()
+        self.set_max_length()
 
     def clear_entry(self) -> None:
         """Clear entry line"""
         self.ui.entry.setText('0')
+        self.set_max_length()
 
     def add_point(self) -> None:
         """Add point to entry line"""
@@ -89,6 +91,7 @@ class Calculator(QMainWindow):
         if not self.ui.temp.text() or self.get_math_sign() == '=':
             self.ui.temp.setText(entry + f" {btn.text()} ")
             self.ui.entry.setText('0')
+            self.set_max_length()
 
     @staticmethod
     def remove_trailing_zeros(num: Text) -> str:
@@ -148,7 +151,6 @@ class Calculator(QMainWindow):
             else:
                 self.ui.temp.setText(self.calculate() + f" {btn.text()} ")
 
-    # Needs improvement!!!
     def negate(self) -> None:
         """Add a minus sign to the number in entry line"""
         entry = self.ui.entry.text()
@@ -158,9 +160,11 @@ class Calculator(QMainWindow):
                 self.ui.entry.setText('-' + entry)
         else:
             self.ui.entry.setText(entry[1:])
-            self.ui.entry.setMaxLength(self.entry_max_length)
+            self.set_max_length()
 
-
+    def set_max_length(self) -> None:
+        """Set max length to the entry line"""
+        self.ui.entry.setMaxLength(self.entry_max_length)
 
 
 if __name__ == "__main__":
