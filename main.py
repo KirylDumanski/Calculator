@@ -67,12 +67,14 @@ class Calculator(QMainWindow):
         self.ui.temp.clear()
         self.clear_temp_if_equal()
         self.set_max_length()
+        self.disable_buttons(False)
 
     def clear_entry(self) -> None:
         """Clear entry line"""
         self.ui.entry.setText('0')
         self.clear_temp_if_equal()
         self.set_max_length()
+        self.disable_buttons(False)
 
     def add_point(self) -> None:
         """Add point to entry line"""
@@ -149,7 +151,14 @@ class Calculator(QMainWindow):
                 else:
                     self.replace_temp_sign()
             else:
-                self.ui.temp.setText(self.calculate() + f" {btn.text()} ")
+                try:
+                    self.ui.temp.setText(self.calculate() + f" {btn.text()} ")
+
+                except TypeError:
+                    pass
+
+                except ZeroDivisionError:
+                    self.show_zero_division_error()
 
     def negate(self) -> None:
         """Add a minus sign to the number in entry line"""
@@ -172,8 +181,24 @@ class Calculator(QMainWindow):
         if self.get_math_sign() == '=':
             self.ui.temp.clear()
 
-    def show_zero_division_error(self):
+    def show_zero_division_error(self) -> None:
+        """Show zero division error"""
+        self.ui.entry.setMaxLength(len(config.ERROR_ZERO_DEV))
         self.ui.entry.setText(config.ERROR_ZERO_DEV)
+        self.disable_buttons(True)
+
+    def disable_buttons(self, disable: bool) -> None:
+        """Disable buttons"""
+        for button in config.BUTTONS_TO_DISABLE:
+            getattr(self.ui, button).setDisabled(disable)
+
+        color = 'color: #A1A1A1' if disable else 'color: black'
+        self.change_buttons_color(color)
+
+    def change_buttons_color(self, css_color: str) -> None:
+        """Change buttons color"""
+        for button in config.BUTTONS_TO_DISABLE:
+            getattr(self.ui, button).setStyleSheet(css_color)
 
 
 if __name__ == "__main__":
