@@ -10,6 +10,8 @@ from typing import Text, Optional, Union
 
 from operator import add, sub, mul, truediv
 
+import config
+
 operations = {
     '+': add,
     '−': sub,
@@ -28,16 +30,15 @@ class Calculator(QMainWindow):
         QFontDatabase.addApplicationFont("fonts/Rubik-Regular.ttf")
 
         # Digits
-        self.ui.btn_0.clicked.connect(self.add_digit)
-        self.ui.btn_1.clicked.connect(self.add_digit)
-        self.ui.btn_2.clicked.connect(self.add_digit)
-        self.ui.btn_3.clicked.connect(self.add_digit)
-        self.ui.btn_4.clicked.connect(self.add_digit)
-        self.ui.btn_5.clicked.connect(self.add_digit)
-        self.ui.btn_6.clicked.connect(self.add_digit)
-        self.ui.btn_7.clicked.connect(self.add_digit)
-        self.ui.btn_8.clicked.connect(self.add_digit)
-        self.ui.btn_9.clicked.connect(self.add_digit)
+        for button in config.NUM_BUTTONS:
+            getattr(self.ui, button).clicked.connect(self.add_digit)
+
+        # Math operations
+        for button in config.MATH_OPERATIONS:
+            getattr(self.ui, button).clicked.connect(self.math_operation)
+
+        # Calculate
+        self.ui.btn_calc.clicked.connect(self.calculate)
 
         # C, CE
         self.ui.btn_c.clicked.connect(self.clear_all)
@@ -49,37 +50,33 @@ class Calculator(QMainWindow):
         # Negative
         self.ui.btn_negative.clicked.connect(self.negate)
 
-        # Math operations
-        self.ui.btn_plus.clicked.connect(self.math_operation)
-        self.ui.btn_minus.clicked.connect(self.math_operation)
-        self.ui.btn_mult.clicked.connect(self.math_operation)
-        self.ui.btn_div.clicked.connect(self.math_operation)
-
-        # Calculate
-        self.ui.btn_calc.clicked.connect(self.calculate)
-
     def add_digit(self) -> None:
         """Add digit to entry line by clicking digit button"""
+        self.clear_temp_if_equal()
         btn = self.sender()
 
-        if self.ui.entry.text() == '0':
-            self.ui.entry.setText(btn.text())
-        else:
-            self.ui.entry.setText(self.ui.entry.text() + btn.text())
+        if btn.objectName() in config.NUM_BUTTONS:
+            if self.ui.entry.text() == '0':
+                self.ui.entry.setText(btn.text())
+            else:
+                self.ui.entry.setText(self.ui.entry.text() + btn.text())
 
     def clear_all(self) -> None:
         """Clear all (entry line and temp label)"""
         self.ui.entry.setText('0')
         self.ui.temp.clear()
+        self.clear_temp_if_equal()
         self.set_max_length()
 
     def clear_entry(self) -> None:
         """Clear entry line"""
         self.ui.entry.setText('0')
+        self.clear_temp_if_equal()
         self.set_max_length()
 
     def add_point(self) -> None:
         """Add point to entry line"""
+        self.clear_temp_if_equal()
         if '.' not in self.ui.entry.text():
             self.ui.entry.setText(self.ui.entry.text() + '.')
 
@@ -131,6 +128,9 @@ class Calculator(QMainWindow):
         except KeyError:
             pass
 
+        except ZeroDivisionError:
+            self.show_zero_division_error()
+
     def replace_temp_sign(self) -> None:
         """Change the math sign in the temp label"""
         btn = self.sender()
@@ -153,6 +153,7 @@ class Calculator(QMainWindow):
 
     def negate(self) -> None:
         """Add a minus sign to the number in entry line"""
+        self.clear_temp_if_equal()
         entry = self.ui.entry.text()
         if '-' not in entry:
             if entry != '0':
@@ -165,6 +166,14 @@ class Calculator(QMainWindow):
     def set_max_length(self) -> None:
         """Set max length to the entry line"""
         self.ui.entry.setMaxLength(self.entry_max_length)
+
+    def clear_temp_if_equal(self) -> None:
+        """Clear the temp label if it contains '=' """
+        if self.get_math_sign() == '=':
+            self.ui.temp.clear()
+
+    def show_zero_division_error(self):
+        self.ui.entry.setText(config.ERROR_ZERO_DEV)
 
 
 if __name__ == "__main__":
