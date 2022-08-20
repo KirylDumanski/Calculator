@@ -20,51 +20,51 @@ class Ui_MainWindow(object):
         icon.addPixmap(QtGui.QPixmap(":/icons/icons/calculate_black_24dp.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet("QWidget {\n"
-"    color: black;\n"
-"    background-color: #F0EDFA;\n"
-"    font-family: Rubik;\n"
-"    font-size: 16pt;\n"
-"    font-weight: 500;\n"
-"}\n"
-"\n"
-"QPushButton {\n"
-"    background-color: #D1D1D1;\n"
-"    border-radius: 30px;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #ADADAD;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #888;\n"
-"}\n"
-"\n"
-"/* Div, mul, sub, add, calc buttons style */\n"
-"#btn_div, #btn_mult, #btn_minus, #btn_plus, #btn_calc {\n"
-"    background-color: #FFA500;\n"
-"}\n"
-"\n"
-"#btn_div:hover, #btn_mult:hover, #btn_minus:hover, #btn_plus:hover, #btn_calc:hover {\n"
-"    background-color: #CF8600;\n"
-"}\n"
-"\n"
-"#btn_div:pressed, #btn_mult:pressed, #btn_minus:pressed, #btn_plus:pressed, #btn_calc:pressed {\n"
-"    background-color: #AD7100;\n"
-"}\n"
-"\n"
-"/*C, CE, Backspace, neg buttons style */\n"
-"#btn_c, #btn_ce, #btn_backspace, #btn_negative{\n"
-"    background-color: #FFFF00;\n"
-"}\n"
-"\n"
-"#btn_c:hover, #btn_ce:hover, #btn_backspace:hover, #btn_negative:hover{\n"
-"    background-color: #C7C700;\n"
-"}\n"
-"\n"
-"#btn_c:pressed, #btn_ce:pressed, #btn_backspace:pressed, #btn_negative:pressed{\n"
-"    background-color: #ADAD00;\n"
-"}")
+                                 "    color: black;\n"
+                                 "    background-color: #F0EDFA;\n"
+                                 "    font-family: Rubik;\n"
+                                 "    font-size: 16pt;\n"
+                                 "    font-weight: 500;\n"
+                                 "}\n"
+                                 "\n"
+                                 "QPushButton {\n"
+                                 "    background-color: #D1D1D1;\n"
+                                 "    border-radius: 30px;\n"
+                                 "}\n"
+                                 "\n"
+                                 "QPushButton:hover {\n"
+                                 "    background-color: #ADADAD;\n"
+                                 "}\n"
+                                 "\n"
+                                 "QPushButton:pressed {\n"
+                                 "    background-color: #888;\n"
+                                 "}\n"
+                                 "\n"
+                                 "/* Div, mul, sub, add, calc buttons style */\n"
+                                 "#btn_div, #btn_mult, #btn_minus, #btn_plus, #btn_calc {\n"
+                                 "    background-color: #FFA500;\n"
+                                 "}\n"
+                                 "\n"
+                                 "#btn_div:hover, #btn_mult:hover, #btn_minus:hover, #btn_plus:hover, #btn_calc:hover {\n"
+                                 "    background-color: #CF8600;\n"
+                                 "}\n"
+                                 "\n"
+                                 "#btn_div:pressed, #btn_mult:pressed, #btn_minus:pressed, #btn_plus:pressed, #btn_calc:pressed {\n"
+                                 "    background-color: #AD7100;\n"
+                                 "}\n"
+                                 "\n"
+                                 "/*C, CE, Backspace, neg buttons style */\n"
+                                 "#btn_c, #btn_ce, #btn_backspace, #btn_negative{\n"
+                                 "    background-color: #FFFF00;\n"
+                                 "}\n"
+                                 "\n"
+                                 "#btn_c:hover, #btn_ce:hover, #btn_backspace:hover, #btn_negative:hover{\n"
+                                 "    background-color: #C7C700;\n"
+                                 "}\n"
+                                 "\n"
+                                 "#btn_c:pressed, #btn_ce:pressed, #btn_backspace:pressed, #btn_negative:pressed{\n"
+                                 "    background-color: #ADAD00;\n"
+                                 "}")
         MainWindow.setIconSize(QtCore.QSize(24, 24))
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -78,7 +78,7 @@ class Ui_MainWindow(object):
         self.temp.setSizePolicy(sizePolicy)
         self.temp.setStyleSheet("color: #888")
         self.temp.setText("")
-        self.temp.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.temp.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.temp.setObjectName("temp")
         self.verticalLayout.addWidget(self.temp)
         self.entry = QtWidgets.QLineEdit(self.centralwidget)
@@ -94,9 +94,9 @@ class Ui_MainWindow(object):
         font.setWeight(62)
         self.entry.setFont(font)
         self.entry.setStyleSheet("font-size: 37pt;\n"
-"border: none")
+                                 "border: none")
         self.entry.setMaxLength(9)
-        self.entry.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.entry.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.entry.setReadOnly(True)
         self.entry.setObjectName("entry")
         self.verticalLayout.addWidget(self.entry)
@@ -223,8 +223,8 @@ class Ui_MainWindow(object):
         self.btn_minus.setSizePolicy(sizePolicy)
         self.btn_minus.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_minus.setStyleSheet("QpushButton:{\n"
-"color: gb(255, 170, 0);\n"
-"}")
+                                     "color: gb(255, 170, 0);\n"
+                                     "}")
         self.btn_minus.setObjectName("btn_minus")
         self.layout_buttons.addWidget(self.btn_minus, 2, 3, 1, 1)
         self.btn_plus = QtWidgets.QPushButton(self.centralwidget)
@@ -262,8 +262,8 @@ class Ui_MainWindow(object):
         self.btn_calc.setSizePolicy(sizePolicy)
         self.btn_calc.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_calc.setStyleSheet("QPushButton:{\n"
-"background-color: orange;\n"
-"}")
+                                    "background-color: orange;\n"
+                                    "}")
         self.btn_calc.setObjectName("btn_calc")
         self.layout_buttons.addWidget(self.btn_calc, 4, 3, 1, 1)
         self.btn_point = QtWidgets.QPushButton(self.centralwidget)
@@ -285,8 +285,8 @@ class Ui_MainWindow(object):
         self.btn_0.setSizeIncrement(QtCore.QSize(0, 0))
         self.btn_0.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_0.setStyleSheet("#btn_0 {\n"
-"    text-indent: 40%;\n"
-"}")
+                                 "    text-indent: 40%;\n"
+                                 "}")
         self.btn_0.setObjectName("btn_0")
         self.layout_buttons.addWidget(self.btn_0, 4, 0, 1, 2)
         self.verticalLayout.addLayout(self.layout_buttons)
@@ -335,4 +335,6 @@ class Ui_MainWindow(object):
         self.btn_point.setShortcut(_translate("MainWindow", "."))
         self.btn_0.setText(_translate("MainWindow", "0"))
         self.btn_0.setShortcut(_translate("MainWindow", "0"))
+
+
 import files_rc
