@@ -337,4 +337,4 @@ class Ui_MainWindow(object):
         self.btn_0.setShortcut(_translate("MainWindow", "0"))
 
 
-import files_rc
+import ui.files_rc

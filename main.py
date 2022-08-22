@@ -2,7 +2,7 @@ import sys
 
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
-from design import Ui_MainWindow
+from ui.design import Ui_MainWindow
 
 from PyQt5.QtGui import QFontDatabase
 
