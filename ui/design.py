@@ -10,6 +10,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+import ui.files_rc
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -17,7 +19,7 @@ class Ui_MainWindow(object):
         MainWindow.resize(300, 500)
         MainWindow.setMinimumSize(QtCore.QSize(300, 500))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/icons/icons/calculate_black_24dp.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/icons/icons/logo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet("QWidget {\n"
                                  "    color: black;\n"
@@ -335,6 +337,3 @@ class Ui_MainWindow(object):
         self.btn_point.setShortcut(_translate("MainWindow", "."))
         self.btn_0.setText(_translate("MainWindow", "0"))
         self.btn_0.setShortcut(_translate("MainWindow", "0"))
-
-
-import ui.files_rc
